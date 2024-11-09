@@ -16,7 +16,9 @@
 <?php
 include "connection.php";
 ?>
-<header></header>
+<header>
+    <?php include "includes/header.php"; ?>
+</header>
 <div id="home-section-1" class="movie-show-container">
     <h1>Добро пожаловать в наш кинотеатр!</h1>
     <p>Наш кинотеатр предлагает уникальные впечатления от просмотра новейших фильмов в комфорте и уюте. Мы гордимся тем, что предоставляем зрителям высококачественное изображение и звук, которые делают каждое посещение особенным.</p>
@@ -39,7 +41,7 @@ include "connection.php";
     <p>Приятного просмотра и до скорой встречи в нашем кинотеатре!</p>
 </div>
 <footer>
-
+    <?php include "includes/footer.php"; ?>
 </footer>
 <script src="scripts/jquery-3.3.1.min.js "></script>
 <script src="scripts/owl.carousel.min.js "></script>

@@ -1,10 +1,5 @@
 // Load Page Parts a Home
 
-$(document).ready(function () {
-    $("header").load("includes/header.php");
-    $("footer").load("includes/footer.php");
-});
-
 // faded scroll
 $(function () {
     var documentElement = $(document),

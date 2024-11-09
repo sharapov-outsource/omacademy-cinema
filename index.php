@@ -16,7 +16,9 @@
 include "connection.php";
 $sql = "SELECT * FROM movieTable";
 ?>
-<header></header>
+<header>
+    <?php include "includes/header.php"; ?>
+</header>
 <div id="home-section-1" class="movie-show-container">
     <h1>Сейчас в кино</h1>
     <h3>Забронируйте билет</h3>
@@ -51,7 +53,7 @@ $sql = "SELECT * FROM movieTable";
 </div>
 
 <footer>
-
+    <?php include "includes/footer.php"; ?>
 </footer>
 <script src="scripts/jquery-3.3.1.min.js "></script>
 <script src="scripts/script.js "></script>

@@ -228,6 +228,24 @@ footer {
   padding: 10px 0;
 }
 
+@media (max-width: 468px) {
+  .movies-container {
+    display: block;
+  }
+  .footer-brand .footer-heading {
+    font-size: 2em;
+  }
+  .navbar-brand h1 {
+    display: none;
+  }
+  .navbar-brand {
+    height: 7em;
+  }
+  .navbar-container {
+    top: 0
+  }
+}
+
 .movie-box {
   position: relative;
   margin: 10px 0;
@@ -1073,3 +1091,5 @@ footer {
   display: block;
   transition: all 0.7s ease;
 }
+
+

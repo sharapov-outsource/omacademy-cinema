@@ -16,7 +16,9 @@
 <?php
 include "connection.php";
 ?>
-<header></header>
+<header>
+    <?php include "includes/header.php"; ?>
+</header>
 <div class="contact-us-container">
     <div class="contact-us-section contact-us-section1">
         <h1>Контакты</h1>
@@ -62,7 +64,9 @@ include "connection.php";
     <div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2289.0723450888167!2d73.29309251275745!3d54.98936555041964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43ab01a145eaf1bd%3A0xdca78e0b2f0ae576!2sKomarova%2C%2013%2C%20Omsk%2C%20Omskaya%20oblast&#39;%2C%20644112!5e0!3m2!1sen!2sru!4v1731147535656!5m2!1sen!2sru" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
-<footer></footer>
+<footer>
+    <?php include "includes/footer.php"; ?>
+</footer>
 <script src="scripts/jquery-3.3.1.min.js "></script>
 <script src="scripts/owl.carousel.min.js "></script>
 <script src="scripts/script.js "></script>
