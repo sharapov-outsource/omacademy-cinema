@@ -73,7 +73,7 @@ $con = mysqli_connect($host, $user, $password, $dbname);
                             <td><?php echo $genreName; ?></td>
                             <td>
                                 <button type="submit" class="btn btn-danger">
-                                    <?php echo "<a href='deleteGenre.php?id=" . $row['genreID'] . "'>Удалить</a>"; ?>
+                                    <?php echo "<a style='color: #ffffff' href='deleteGenre.php?id=" . $row['genreID'] . "'>Удалить</a>"; ?>
                                 </button>
                             </td>
                         </tr>

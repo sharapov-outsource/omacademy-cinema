@@ -127,7 +127,7 @@ ini_set('display_errors', 1);
                 <input placeholder="Фамилия" type="text" name="lName">
                 <input placeholder="Номер телефона" type="text" name="pNumber" required>
                 <input type="hidden" name="movie_id" value="<?php echo $id; ?>">
-                <button type="submit" value="save" name="submit" class="form-btn">Забронировать</button>
+                <button type="submit" value="save" name="submit" class="form-btn">В корзину</button>
             </form>
         </div>
     </div>

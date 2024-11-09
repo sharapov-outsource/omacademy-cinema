@@ -50,7 +50,7 @@ if (isset($_POST['confirm'])) {
         <?php if (!empty($_SESSION['cart'])): ?>
             <div class="cart-items">
                 <?php foreach ($_SESSION['cart'] as $reservation): ?>
-                    <div class="cart-item">
+                    <div class="cart-item" style="margin-bottom: 20px">
                         <h1 class="title"><?php echo $reservation['movie_title']; ?></h1>
                         <div class="movie-information">
                             <table>

@@ -85,7 +85,7 @@ $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movieTable"));
             </div>
             <div class="admin-section-panel admin-section-panel2">
                 <div class="admin-panel-section-header">
-                    <h2>Недавние фильма</h2>
+                    <h2>Фильмы</h2>
                 </div>
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -95,9 +95,9 @@ $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movieTable"));
                         <th>Постер</th>
                         <th>Название фильма</th>
                         <th>Жанр фильма</th>
-                        <th>Дата релиза</th>
+                        <th>Дата показа</th>
                         <th>Режиссер</th>
-                        <th>Подробнее</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -118,7 +118,7 @@ $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movieTable"));
                             <td><?php echo $genre; ?></td>
                             <td><?php echo $releasedate; ?></td>
                             <td><?php echo $movieactor; ?></td>
-                            <td><button value="Удалить" type="submit" class="btn btn-danger"><?php echo "<a href='deletemovie.php?id=" . $row['movieID'] . "'>Удалить</a>"; ?></button></td>
+                            <td><button value="Удалить" type="submit" class="btn btn-danger"><?php echo "<a href='deletemovie.php?id=" . $row['movieID'] . "' style='color: #ffffff'>Удалить</a>"; ?></button></td>
                         </tr>
                     <?php }
                     ?>
