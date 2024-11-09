@@ -1,3 +1,28 @@
+<?php
+session_start();
+include "connection.php";
+
+if (isset($_POST['confirm'])) {
+    foreach ($_SESSION['cart'] as $reservation) {
+        $date = $reservation['date'];
+        $hour = $reservation['hour'];
+        $fName = $reservation['fName'];
+        $lName = $reservation['lName'];
+        $pNumber = $reservation['pNumber'];
+        $movie_id = $reservation['movie_id'];
+
+        $query = "INSERT INTO reservations (date, hour, fName, lName, pNumber, movie_id) VALUES ('$date', '$hour', '$fName', '$lName', '$pNumber', '$movie_id')";
+        mysqli_query($con, $query);
+    }
+
+    // Очистить корзину после успешного бронирования
+    $_SESSION['cart'] = [];
+
+    // Перенаправление с сообщением об успешном бронировании
+    header("Location: cart.php?success=2");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -12,37 +37,60 @@
     <script src="_.js "></script>
 </head>
 
-<body>
-<?php
-include "connection.php";
-?>
-<header></header>
-<div id="home-section-1" class="movie-show-container">
-    <h1>Добро пожаловать в наш кинотеатр!</h1>
-    <p>Наш кинотеатр предлагает уникальные впечатления от просмотра новейших фильмов в комфорте и уюте. Мы гордимся тем, что предоставляем зрителям высококачественное изображение и звук, которые делают каждое посещение особенным.</p>
-    <br />
-    <h1>Залы и оборудование</h1>
-    <p>Мы оснащены самыми современными кинотехнологиями, включая экраны с высоким разрешением и проекторы, поддерживающие форматы IMAX и 3D. Наши залы оборудованы удобными креслами, каждый из которых предлагает отличную видимость и комфорт.</p>
-    <br />
-    <h1>Репертуар</h1>
-    <p>В нашем кинотеатре вы найдете фильмы на любой вкус: от блокбастеров до независимого кино, от комедий до драматических шедевров. Мы регулярно обновляем наш репертуар, чтобы вы всегда могли насладиться последними новинками киноиндустрии.</p>
-    <br />
-    <h1>Удобства и обслуживание</h1>
-    <p>Мы предлагаем широкий ассортимент снеков и напитков, которые можно купить в нашем буфете. Вежливый и дружелюбный персонал всегда готов помочь и сделать ваше пребывание максимально приятным.</p>
-    <br />
-    <h1>Онлайн-бронирование</h1>
-    <p>На нашем сайте вы можете легко и быстро забронировать билеты на интересующие вас сеансы. Просто выберите фильм, дату и время, и ваши билеты будут готовы к оплате и получению прямо на входе в кинотеатр.</p>
-    <br />
-    <h1>Специальные предложения</h1>
-    <p>Мы регулярно проводим акции и специальные мероприятия для наших посетителей. Следите за новостями на нашем сайте и в социальных сетях, чтобы не пропустить выгодные предложения и киноночные марафоны.</p>
-    <br />
-    <p>Приятного просмотра и до скорой встречи в нашем кинотеатре!</p>
+<body style="background-color:#6e5a11;">
+<div class="booking-panel">
+    <div class="booking-panel-section booking-panel-section1">
+        <h1>ВАША КОРЗИНА</h1>
+    </div>
+    <div class="booking-panel-section booking-panel-section2">
+        <?php if (isset($_GET['success']) && $_GET['success'] == 1) : ?>
+            <div style="background-color: #fff;"><h1><center>Добавлено в корзину</center></h1></div>
+        <?php endif; ?>
+        <?php if (isset($_GET['success']) && $_GET['success'] == 2) : ?>
+            <div style="background-color: #fff;"><h1><center>Заявка отправлена</center></h1></div>
+        <?php endif; ?>
+        <?php if (!empty($_SESSION['cart'])): ?>
+            <div class="cart-items">
+                <?php foreach ($_SESSION['cart'] as $reservation): ?>
+                    <div class="cart-item">
+                        <div class="title"><?php echo $reservation['movie_title']; ?></div>
+                        <div class="movie-information">
+                            <table>
+                                <tr>
+                                    <td>Дата</td>
+                                    <td><?php echo $reservation['date']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Время</td>
+                                    <td><?php echo $reservation['hour']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Имя</td>
+                                    <td><?php echo $reservation['fName']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Фамилия</td>
+                                    <td><?php echo $reservation['lName']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Номер телефона</td>
+                                    <td><?php echo $reservation['pNumber']; ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <form action="" method="POST">
+                <button type="submit" name="confirm" class="form-btn">Забронировать</button>
+            </form>
+        <?php else: ?>
+            <p>Ваша корзина пуста.</p>
+        <?php endif; ?>
+    </div>
 </div>
-<footer>
 
-</footer>
 <script src="scripts/jquery-3.3.1.min.js "></script>
-<script src="scripts/owl.carousel.min.js "></script>
 <script src="scripts/script.js "></script>
 </body>
 

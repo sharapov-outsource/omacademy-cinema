@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
 <?php
+session_start(); // Начинаем сессию
 $id = $_GET['id'];
+
 // условия
 if (!$_GET['id']) {
     echo "<script>alert('Вы не должны попадать сюда напрямую');window.location.href='index.php';</script>";
 }
 include "connection.php";
+
+if (isset($_POST['submit'])) {
+    $movieQuery = "SELECT * FROM movieTable WHERE movieID = $id";
+    $movieImageById = mysqli_query($con, $movieQuery);
+    $row = mysqli_fetch_array($movieImageById);
+
+    $reservation = [
+        'date' => $_POST['date'],
+        'hour' => $_POST['hour'],
+        'fName' => $_POST['fName'],
+        'lName' => $_POST['lName'],
+        'pNumber' => $_POST['pNumber'],
+        'movie_id' => $_POST['movie_id'],
+        'movie_title' => $row['movieTitle']
+    ];
+
+    // Добавить бронирование в сессию
+    $_SESSION['cart'][] = $reservation;
+
+    // Перенаправление с сообщением об успешной записи
+    header("Location: cart.php?id=$id&success=1");
+    exit();
+}
+
 $movieQuery = "SELECT * FROM movieTable WHERE movieID = $id";
 $movieImageById = mysqli_query($con, $movieQuery);
 $row = mysqli_fetch_array($movieImageById);
@@ -39,7 +65,6 @@ ini_set('display_errors', 1);
         <h1>ЗАБРОНИРОВАТЬ БИЛЕТ</h1>
     </div>
     <div class="booking-panel-section booking-panel-section2">
-
     </div>
     <div class="booking-panel-section booking-panel-section3">
         <div class="movie-box">
@@ -50,7 +75,7 @@ ini_set('display_errors', 1);
     </div>
     <div class="booking-panel-section booking-panel-section4">
         <?php if(isset($_GET['success']) && $_GET['success'] == 1) : ?>
-            <div style="background-color: #fff;"><h1><center>Заявка отправлена</center></h1></div>
+            <div style="background-color: #fff;"><h1><center>Добавлено в корзину</center></h1></div>
         <?php endif; ?>
         <div class="title"><?php echo $row['movieTitle']; ?></div>
         <div class="movie-information">
@@ -78,7 +103,7 @@ ini_set('display_errors', 1);
             </table>
         </div>
         <div class="booking-form-container">
-            <form action="book.php" method="POST">
+            <form action="" method="POST">
                 <select name="date" required>
                     <option value="" disabled selected>ДАТА</option>
                     <?php
