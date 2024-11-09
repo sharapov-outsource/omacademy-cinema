@@ -36,7 +36,6 @@
                     <i class="far fa-clock"></i> 125м <i class="fas fa-desktop"></i> IMAX
                     <h3>СИНОПСИС</h3>
                     <p>Итан и его команда берутся за выполнение самой невозможной миссии — ликвидацию Синдиката, международной преступной организации.</p>
-                    <div class="schedule-item">ПОДРОБНОСТИ</div>
                 </td>
                 <td>
                     <div class="hall-type">
@@ -74,7 +73,7 @@
                     <i class="far fa-clock"></i> 125м <i class="fas fa-desktop"></i> IMAX
                     <h3>СИНОПСИС</h3>
                     <p>Итан и его команда берутся за выполнение самой невозможной миссии — ликвидацию Синдиката, международной преступной организации.</p>
-                    <div class="schedule-item">ПОДРОБНОСТИ</div>
+                    
                 </td>
                 <td>
                     <div class="hall-type">
@@ -112,7 +111,7 @@
                     <i class="far fa-clock"></i> 125м <i class="fas fa-desktop"></i> IMAX
                     <h3>СИНОПСИС</h3>
                     <p>Итан и его команда берутся за выполнение самой невозможной миссии — ликвидацию Синдиката, международной преступной организации.</p>
-                    <div class="schedule-item">ПОДРОБНОСТИ</div>
+                    
                 </td>
                 <td>
                     <div class="hall-type">

@@ -136,13 +136,13 @@ footer {
     position: relative;
     top: 1vmax;
     left: 1vmax;
-    padding: 0;
     margin: 0;
     color: #fff;
     font-size: 7em;
     font-family: "Lobster", cursive;
     text-shadow: 2px 2px 0px #6e5a11, 4px 4px 0px #836d24, 6px 6px 0px #a88616,
       8px 8px 0px #b08909, 10px 10px 0px #ab995e;
+    padding: 30px 0;
   }
   
 .footer-section {
