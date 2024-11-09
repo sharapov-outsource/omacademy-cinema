@@ -244,6 +244,9 @@ footer {
   .navbar-container {
     top: 0
   }
+  .contact-us-container {
+    display: block;
+  }
 }
 
 .movie-box {
@@ -630,6 +633,7 @@ footer {
 .schedule-table table {
   text-align: left;
   border-collapse: collapse;
+  width: 100%;
 }
 
 .schedule-table table tr th {

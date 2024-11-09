@@ -51,7 +51,6 @@ include "connection.php";
 
     </div>
     <div class="contact-us-section contact-us-section2">
-        <h1>Контакты</h1>
         <h3>Телефоны</h3>
         <p><a href="tel:88007564783">8(800)7564783</a></p>
         <h3>Адрес</h3>
