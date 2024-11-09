@@ -26,7 +26,7 @@ $sql = "SELECT * FROM movieTable";
         <?php
         if ($result = mysqli_query($con, $sql)) {
             if (mysqli_num_rows($result) > 0) {
-                for ($i = 0; $i <= 5; $i++) {
+                for ($i = 0; $i < 5; $i++) {
                     $row = mysqli_fetch_array($result);
                     echo '<div class="movie-box">';
                     echo '<img src="' . $row['movieImg'] . '" alt=" ">';
