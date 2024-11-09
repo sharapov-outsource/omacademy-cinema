@@ -50,6 +50,8 @@ $sql = "SELECT * FROM movieTable";
         mysqli_close($con);
         ?>
     </div>
+
+    <a href="/schedule.php">Расписание сеансов</a>
 </div>
 
 <footer>

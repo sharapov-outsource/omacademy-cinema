@@ -21,7 +21,7 @@ include "connection.php";
 </header>
 <div class="contact-us-container">
     <div class="contact-us-section contact-us-section1">
-        <h1>Контакты</h1>
+        <h1>Обратная связь</h1>
         <p>Не стесняйтесь связаться с нами</p>
         <form action="" method="POST">
             <input placeholder="Имя" name="fName" required><br>
@@ -51,6 +51,7 @@ include "connection.php";
 
     </div>
     <div class="contact-us-section contact-us-section2">
+        <h1>Контакты</h1>
         <h3>Телефоны</h3>
         <p><a href="tel:88007564783">8(800)7564783</a></p>
         <h3>Адрес</h3>

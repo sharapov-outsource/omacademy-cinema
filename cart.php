@@ -51,7 +51,7 @@ if (isset($_POST['confirm'])) {
             <div class="cart-items">
                 <?php foreach ($_SESSION['cart'] as $reservation): ?>
                     <div class="cart-item">
-                        <div class="title"><?php echo $reservation['movie_title']; ?></div>
+                        <h1 class="title"><?php echo $reservation['movie_title']; ?></h1>
                         <div class="movie-information">
                             <table>
                                 <tr>
@@ -79,9 +79,11 @@ if (isset($_POST['confirm'])) {
                     </div>
                 <?php endforeach; ?>
             </div>
+        <div class="booking-form-container">
             <form action="" method="POST">
                 <button type="submit" name="confirm" class="form-btn">Забронировать</button>
             </form>
+        </div>
         <?php else: ?>
             <p>Ваша корзина пуста.</p>
         <?php endif; ?>
