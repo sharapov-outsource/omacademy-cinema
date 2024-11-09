@@ -4,14 +4,15 @@ include "connection.php";
 
 if (isset($_POST['confirm'])) {
     foreach ($_SESSION['cart'] as $reservation) {
-        $date = $reservation['date'];
-        $hour = $reservation['hour'];
-        $fName = $reservation['fName'];
-        $lName = $reservation['lName'];
-        $pNumber = $reservation['pNumber'];
-        $movie_id = $reservation['movie_id'];
+        $movieID = $reservation['movie_id'];
+        $bookingDate = $reservation['date'];
+        $bookingTime = $reservation['hour'];
+        $bookingFName = $reservation['fName'];
+        $bookingLName = $reservation['lName'];
+        $bookingPNumber = $reservation['pNumber'];
 
-        $query = "INSERT INTO reservations (date, hour, fName, lName, pNumber, movie_id) VALUES ('$date', '$hour', '$fName', '$lName', '$pNumber', '$movie_id')";
+        $query = "INSERT INTO bookingtable (movieID, bookingDate, bookingTime, bookingFName, bookingLName, bookingPNumber, status) 
+                  VALUES ('$movieID', '$bookingDate', '$bookingTime', '$bookingFName', '$bookingLName', '$bookingPNumber', 'Новое')";
         mysqli_query($con, $query);
     }
 
@@ -43,11 +44,8 @@ if (isset($_POST['confirm'])) {
         <h1>ВАША КОРЗИНА</h1>
     </div>
     <div class="booking-panel-section booking-panel-section2">
-        <?php if (isset($_GET['success']) && $_GET['success'] == 1) : ?>
-            <div style="background-color: #fff;"><h1><center>Добавлено в корзину</center></h1></div>
-        <?php endif; ?>
         <?php if (isset($_GET['success']) && $_GET['success'] == 2) : ?>
-            <div style="background-color: #fff;"><h1><center>Заявка отправлена</center></h1></div>
+            <div style="background-color: #fff;"><h1><center>Бронирование успешно</center></h1></div>
         <?php endif; ?>
         <?php if (!empty($_SESSION['cart'])): ?>
             <div class="cart-items">

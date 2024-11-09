@@ -174,7 +174,7 @@ $db = mysqli_select_db($con, "cinema_db");
 						<tr>
 							<td class="title">
 								<div class="footer-brand">
-									<h1 class="footer-heading">Кинотеатр</h1>
+									<h1 class="footer-heading">Дом кино</h1>
 								</div>
 							</td>
 							<td>
@@ -193,7 +193,7 @@ $db = mysqli_select_db($con, "cinema_db");
 					<table>
 						<tr>
 							<td>
-								Кинотеатр<br>
+								Дом кино<br>
 								ул Театральная 23<br>
 								Омск
 							</td>

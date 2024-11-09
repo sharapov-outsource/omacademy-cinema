@@ -9,7 +9,7 @@ if (isset($_POST['but_logout'])) {
 ?>
 <div class="admin-section-header">
     <div class="admin-logo">
-        Кинотеатр
+        Дом кино
     </div>
     <div class="admin-login-info">
         <div style="padding: 0 20px;">

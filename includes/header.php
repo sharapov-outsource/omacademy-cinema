@@ -1,6 +1,6 @@
 <div class="navbar-brand">
     <a href="index.php">
-        <h1 class="navbar-heading">Кинотеатр</h1>
+        <h1 class="navbar-heading">Дом кино</h1>
     </a>
 </div>
 <div class="navbar-container">
