@@ -4,12 +4,14 @@ include "config.php";
 // Проверка вошел ли пользователь в систему
 if (!isset($_SESSION['uname'])) {
     header('Location: index.php');
+    exit;
 }
 
 // Выйти из системы
 if (isset($_POST['but_logout'])) {
     session_destroy();
     header('Location: index.php');
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -46,13 +48,13 @@ $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movieTable"));
                     <input placeholder="Название" type="text" name="movieTitle" required>
 
                     <!-- Dropdown for genres -->
-                    <select name="movieGenre" required>
+                    <select name="genreID" required>
                         <option value="" disabled selected>Жанр</option>
                         <?php
                         $genre_query = "SELECT * FROM genres";
                         $genre_result = mysqli_query($con, $genre_query);
                         while ($row = mysqli_fetch_assoc($genre_result)) {
-                            echo "<option value='" . $row['genreName'] . "'>" . $row['genreName'] . "</option>";
+                            echo "<option value='" . $row['genreID'] . "'>" . $row['genreName'] . "</option>";
                         }
                         ?>
                     </select>
@@ -70,11 +72,11 @@ $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movieTable"));
                         // Обработка загрузки файла
                         $target_dir = "img/";
                         $target_file = $target_dir . basename($_FILES["movieImg"]["name"]);
-                        move_uploaded_file($_FILES["movieImg"]["tmp_name"], ROOT_PATH.$target_file);
+                        move_uploaded_file($_FILES["movieImg"]["tmp_name"], $target_file);
 
                         $insert_query = "INSERT INTO 
-                            movieTable (movieImg, movieTitle, movieGenre, movieDuration, movieRelDate, movieDirector, movieActors)
-                            VALUES ('$target_file', '" . $_POST["movieTitle"] . "', '" . $_POST["movieGenre"] . "', '" . $_POST["movieDuration"] . "', '" . $_POST["movieRelDate"] . "', '" . $_POST["movieDirector"] . "', '" . $_POST["movieActors"] . "')";
+                            movieTable (movieImg, movieTitle, genreID, movieDuration, movieRelDate, movieDirector, movieActors)
+                            VALUES ('$target_file', '" . $_POST["movieTitle"] . "', '" . $_POST["genreID"] . "', '" . $_POST["movieDuration"] . "', '" . $_POST["movieRelDate"] . "', '" . $_POST["movieDirector"] . "', '" . $_POST["movieActors"] . "')";
                         $rs = mysqli_query($con, $insert_query);
                         if ($rs) {
                             echo "<script>alert('Успешно отправлено'); window.location.href='addmovie.php';</script>";
@@ -102,12 +104,14 @@ $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movieTable"));
                     </thead>
                     <tbody>
                     <?php
-                    $select = "SELECT * FROM `movieTable`";
+                    $select = "SELECT m.movieID, m.movieImg, m.movieTitle, g.genreName, m.movieRelDate, m.movieDirector 
+                               FROM movieTable m 
+                               JOIN genres g ON m.genreID = g.genreID";
                     $run = mysqli_query($con, $select);
                     while ($row = mysqli_fetch_array($run)) {
                         $ID = $row['movieID'];
                         $title = $row['movieTitle'];
-                        $genre = $row['movieGenre'];
+                        $genre = $row['genreName'];
                         $releasedate = $row['movieRelDate'];
                         $movieactor = $row['movieDirector'];
                         ?>

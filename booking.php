@@ -7,6 +7,7 @@ $id = $_GET['id'];
 // условия
 if (!$_GET['id']) {
     echo "<script>alert('Вы не должны попадать сюда напрямую');window.location.href='index.php';</script>";
+    exit;
 }
 include "connection.php";
 
@@ -33,7 +34,11 @@ if (isset($_POST['submit'])) {
     exit();
 }
 
-$movieQuery = "SELECT * FROM movieTable WHERE movieID = $id";
+// Update the query to join with genres table
+$movieQuery = "SELECT m.*, g.genreName 
+               FROM movieTable m 
+               JOIN genres g ON m.genreID = g.genreID 
+               WHERE m.movieID = $id";
 $movieImageById = mysqli_query($con, $movieQuery);
 $row = mysqli_fetch_array($movieImageById);
 
@@ -82,7 +87,7 @@ ini_set('display_errors', 1);
             <table>
                 <tr>
                     <td>ЖАНР</td>
-                    <td><?php echo $row['movieGenre']; ?></td>
+                    <td><?php echo $row['genreName']; ?></td>
                 </tr>
                 <tr>
                     <td>ДЛИТЕЛЬНОСТЬ</td>
